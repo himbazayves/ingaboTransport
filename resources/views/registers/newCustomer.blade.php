@@ -10,10 +10,9 @@
 
       
         <div class="container-fluid">
+          
 
-          <div class="alert bg-light border-left-success"> <center> <h1 class="h3 mb-4 text-gray-800">Umugenzi mushya</h1></center></div>
-       
-         
+      
 
            
           <div class="row justify-content-center">
@@ -21,7 +20,12 @@
             <div class="col-lg-6">
 
 
+
               <div class="card">
+                <div class="card-header">
+                  Umugenzi mushya
+
+                </div>
 
                 <div class="card-body">
 

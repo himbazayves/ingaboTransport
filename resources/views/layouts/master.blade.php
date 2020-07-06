@@ -117,6 +117,87 @@
   <script src="{{asset('template/js/demo/datatables-demo.js')}}"></script>
   @include('sweetalert::alert')
 
+
+  <script >
+    function dropdown(msg){
+        var district=msg;
+  
+        $.ajax({
+       url: 'getsectors/'+district,
+       type: 'get',
+       dataType: 'json',
+       success: function(response){
+            $("#sector").empty(); 
+  
+         var len = 0;
+         if(response['data'] != null){
+            
+           len = response['data'].length;
+         
+         }
+         if(len > 0){
+           // Read data and create <option >
+          
+        
+           for(var i=0; i<len; i++){
+  
+             var id = response['data'][i].id;
+             var name = response['data'][i].name;
+  
+             var option = "<option value='"+id+"'>"+name+"</option>"; 
+  
+             $("#sector").append(option); 
+           }
+         }
+  
+       }
+    });
+    }
+  </script>
+  
+  
+  
+  
+  <script >
+  function cell_dropdown(msg){
+  var sector=msg;
+  
+  $.ajax({
+  url: 'getcells/'+sector,
+  type: 'get',
+  dataType: 'json',
+  success: function(response){
+    $("#cell").empty(); 
+  
+  var len = 0;
+  if(response['data'] != null){
+    
+   len = response['data'].length;
+  
+  }
+  if(len > 0){
+   // Read data and create <option >
+  
+  
+   for(var i=0; i<len; i++){
+  
+     var id = response['data'][i].id;
+     var name = response['data'][i].name;
+  
+     var option = "<option value='"+name+"'>"+name+"</option>"; 
+  
+     $("#cell").append(option); 
+   }
+  }
+  
+  }
+  });
+  }
+  </script>
+  
+  
+  
+
 </body>
 
 </html>

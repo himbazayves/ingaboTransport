@@ -8,6 +8,9 @@ use App\User;
 use App\Agent;
 use App\Volonteer;
 use App\Motar;
+use App\District;
+use App\Cell;
+use App\Sector;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,6 +76,11 @@ class RegisterController extends Controller
 
         ]);
 
+        $district=District::find($district)->name;
+        $sector=Sector::find($sector)->name;
+        $cell=Cell::find($cell)->name;
+
+
         if($request->user_type==2){
 
             $request->validate([
@@ -87,8 +95,8 @@ class RegisterController extends Controller
            $agent->first_name=$request->first_name;
            $agent->last_name=$request->last_name;
            $agent->phone_number=$request->phone_number;
-           $agent->district=$request->district;
-           $agent->sector=$request->sector;
+           $agent->district=$district;
+           $agent->sector=$sector;
            //$agent->cell=$request->cell;
            $agent->company=$request->company;
 
@@ -123,8 +131,8 @@ class RegisterController extends Controller
             $motar->first_name=$request->first_name;
             $motar->last_name=$request->last_name;
             $motar->phone_number=$request->phone_number;
-            $motar->district=$request->district;
-            $motar->sector=$request->sector;
+            $motar->district=$district;
+            $motar->sector=$sector;
            // $motar->cell=$request->cell;
             $motar->plate=$request->plate;
  
@@ -148,8 +156,8 @@ class RegisterController extends Controller
             $volo->first_name=$request->first_name;
             $volo->last_name=$request->last_name;
             $volo->phone_number=$request->phone_number;
-            $volo->district=$request->district;
-            $volo->sector=$request->sector;
+            $volo->district=$district;
+            $volo->sector=$sector;
            // $volo->cell=$request->cell;
             
             $volo->save();
@@ -179,6 +187,13 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        $districts=District::all();
+        
+        return view('auth.register', ['districts'=>$districts]);
     }
 
     /**

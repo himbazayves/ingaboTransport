@@ -8,6 +8,7 @@ use App\Agent;
 use App\Volonteer;
 use App\Motar;
 use App\Customer;
+use App\District;
 use Auth;
 use Hash;
 
@@ -84,6 +85,18 @@ class RegistersController extends Controller
             $a->save();
             Alert::success('Success Title', 'Success Message');
 
+
+          }
+
+
+          function d(){
+
+            $d=District::where('name',  'like', 'gasabo');
+        echo $d->name;
+            foreach($d as $d){
+
+              echo $d->name;
+            }
 
           }
 }

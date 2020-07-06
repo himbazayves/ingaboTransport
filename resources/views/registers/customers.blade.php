@@ -10,12 +10,6 @@
       
         <div class="container-fluid">
 
-            <div class="alert alert-warning">
-<center> Nta mugenzi numwe wari wandika </center>
-
-<p>  <center> <a href="{{route('registers.newCustomer')}}" class="btn btn-success"> Kanda hano wandike Umugenzi mushya</a> </center></p>
-
-            </div>
          
 
             @if($customers->count()!=0)
@@ -62,6 +56,14 @@
                   </div>
                 </div>
               </div>
+              @else
+              
+            <div class="alert alert-warning">
+              <center> Nta mugenzi numwe wari wandika </center>
+              
+              <p>  <center> <a href="{{route('registers.newCustomer')}}" class="btn btn-success"> Kanda hano wandike Umugenzi mushya</a> </center></p>
+              
+                          </div>
 
               @endif
 

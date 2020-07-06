@@ -25,6 +25,7 @@ Route::get('Account/newTraveller', 'RegistersController@newCustomer')->name('reg
 Route::post('Account/StoreNewTraveller', 'RegistersController@storeNewCustomer')->name('registers.storeNewCustomer');
 Route::get('Account/customer', 'RegistersController@customers')->name('registers.customers');
 Route::get('/y', 'RegistersController@y');
+Route::get('/d', 'RegistersController@d');
 
 
 ///
@@ -33,4 +34,6 @@ Route::get('Admin/all-travels', 'AdminController@customers')->name('admin.custom
 Route::get('Admin/filter-result', 'AdminController@filterResult')->name('admin.filterResult');
 Route::post('Admin/filterHandler', 'AdminController@filterHandler')->name('admin.filterHandler');
 
-
+//
+Route::get('/getsectors/{id}','HelperController@find_sector')->name('getsectors');
+Route::get('/getcells/{id}','HelperController@find_cell')->name('getcells');
